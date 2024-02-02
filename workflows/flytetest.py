@@ -1,35 +1,26 @@
 from flytekit import task, workflow
 from pyathena import connect
+from pyathena.pandas.cursor import PandasCursor
+
 
 @task
-def test():
-    try:
-        access_key = "AKIAQNZ3GR56E7BQ22VF"
-        secret_key = "GQQLLXsLCxkcfd3/TPXYMBzZD3hA3iBCibE4ksku"
+def test1():
 
-        conn  = connect(aws_access_key_id=access_key,
+    # Please use your access key,secret key and aws output bucket for your athena query
+    access_key = ""
+    secret_key = ""
+    conn  = connect(aws_access_key_id=access_key,
                            aws_secret_access_key=secret_key,
-                           s3_staging_dir="s3://drd-029652062076-28e0/",
-                           region_name="us-east-1")
-        query = "SELECT * FROM default.flytetestingflytetesting limit 10;"
-        cursor = conn.cursor()
-        cursor.execute(query)
-
-        results = cursor.fetchall()
-        for row in results:
-            print(row)
-
-        cursor.close()
-        conn.close()
-        print("Done")
-    
-    except Exception as e:
-        print(e)
-
+                           s3_staging_dir="",
+                           region_name="us-east-1",
+                           cursor_class=PandasCursor).cursor()
+    query = "SELECT * FROM default.flytetestingflytetesting limit 10;"
+    df = conn.execute(query).as_pandas()
+    print(df.head(5))
 
 @workflow
 def hello_world_wf():
-    test()
+    test1()
     print("success")
 
 
