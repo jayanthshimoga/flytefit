@@ -1,4 +1,4 @@
-# FlyteFabric
+# FlyteFit
 
 A template for the recommended layout of a Flyte enabled repository for code written in python using [flytekit](https://docs.flyte.org/projects/flytekit/en/latest/).
 
@@ -15,8 +15,8 @@ use the git sha to version your Flyte workflows.
 This project uses poetry. Please use the below commands to setup the poetry project.
 
 ```bash
-conda create -n flytefabric python=3.9
-conda activate flytefabric
+conda create -n flytefit python=3.9
+conda activate flytefit
 pip install poetry==1.6.1
 poetry install
 ```
@@ -33,6 +33,7 @@ Make sure you have
     - AWS access key 
     - AWS secret key 
     - S3 bucket and 
+    - ECR public repo
     - Athena table in AWS. 
 
 

@@ -13,7 +13,7 @@ flytekitplugins-deck-standard = "1.10.2"
 flytekitplugins-papermill = "1.10.2"
 flytekitplugins-pod = "1.10.2"
 kubernetes = "^28.1.0"
-pyathena = "3.1.0"
+pyathena = "3.2.0"
 
 [build-system]
 requires = ["poetry-core"]
